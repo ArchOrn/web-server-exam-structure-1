@@ -1,16 +1,11 @@
+version: "3.3"
+
 services:
   apache:
     image: httpd:2.4
-    restart: always
     ports:
       - ${PORT}:8075
     volumes:
       - ./www:/usr/local/apache2/htdocs
       - ./apache/httpd.conf:/usr/local/apache2/conf/httpd.conf:ro
       - ./apache/vhost.conf:/usr/local/apache2/conf/vhost.conf:ro
-    networks:
-      - synergy
-
-networks:
-  synergy:
-    driver: bridge
